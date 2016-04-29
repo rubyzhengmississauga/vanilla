@@ -572,4 +572,9 @@ class UtilityController extends DashboardController {
         $this->setData('_NoPanel', true);
         $this->render();
     }
+
+    public function deployedTimestamp() {
+        $this->setData('timestamp', c('Garden.Deployed'));
+        $this->render('blank');
+    }
 }
