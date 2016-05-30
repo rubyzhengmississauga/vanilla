@@ -56,7 +56,7 @@ abstract class SortableModule extends Gdn_Module {
      */
     private $isPrepared = false;
 
-    private $allowedItemModifiers = array('rel', 'popinRel', 'icon', 'badge');
+    private $allowedItemModifiers = array('rel', 'popinRel', 'icon', 'badge', 'attributes');
 
     /**
      * Constructor. Should be called by all extending classes' constructors.
@@ -151,7 +151,7 @@ abstract class SortableModule extends Gdn_Module {
      * - **popinRel**: string - Endpoint for a popin.
      * - **badge**: string - Info to put into a badge, usually a number.
      * - **icon**: string - Name of the icon for the item, excluding the 'icon-' prefix.
-     * @return object $this The calling object.
+     * @return SortableModule $this The calling object.
      * @throws Exception
      */
     public function addGroup($text = '', $key = '', $cssClass = '', $sort = array(), $modifiers = array()) {
@@ -216,7 +216,7 @@ abstract class SortableModule extends Gdn_Module {
      * - **popinRel**: string - Endpoint for a popin.
      * - **badge**: string - Info to put into a badge, usually a number.
      * - **icon**: string - Name of the icon for the item, excluding the 'icon-' prefix.
-     * @return object $this The calling object.
+     * @return $this The calling object.
      * @throws Exception
      */
     public function addLink($text, $url, $key = '', $cssClass = '', $sort = array(), $disabled = false, $modifiers = array()) {
