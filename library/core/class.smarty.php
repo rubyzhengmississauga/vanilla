@@ -189,7 +189,7 @@ class Gdn_Smarty {
         $Return = true;
         try {
             $Result = $Smarty->fetch($Path, null, $CompileID);
-            // echo Wrap($Result, 'textarea', array('style' => 'width: 900px; height: 400px;'));
+            echo Wrap($Result, 'textarea', array('style' => 'width: 900px; height: 400px;'));
             $Return = ($Result == '' || strpos($Result, '<title>Fatal Error</title>') > 0 || strpos($Result, '<h1>Something has gone wrong.</h1>') > 0) ? false : true;
         } catch (Exception $ex) {
             $Return = false;
