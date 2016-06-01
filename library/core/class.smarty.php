@@ -159,7 +159,7 @@ class Gdn_Smarty {
     public function smarty() {
         if (is_null($this->_Smarty)) {
             $Smarty = new SmartyBC();
-
+            $Smarty->debugging = true;
             $Smarty->setCacheDir(PATH_CACHE.'/Smarty/cache');
             $Smarty->setCompileDir(PATH_CACHE.'/Smarty/compile');
             $Smarty->addPluginsDir(PATH_LIBRARY.'/vendors/SmartyPlugins');
@@ -187,13 +187,15 @@ class Gdn_Smarty {
         }
 
         $Return = true;
-        //try {
+        try {
             $Result = $Smarty->fetch($Path, null, $CompileID);
             echo Wrap($Result, 'textarea', array('style' => 'width: 900px; height: 400px;'));
             $Return = ($Result == '' || strpos($Result, '<title>Fatal Error</title>') > 0 || strpos($Result, '<h1>Something has gone wrong.</h1>') > 0) ? false : true;
-        //} catch (Exception $ex) {
-        //    $Return = false;
-        //}
+        } catch (Exception $ex) {
+            $debug = $Smarty->getDebugging();
+            decho($debug); die();
+            $Return = false;
+        }
         return $Return;
     }
 }
