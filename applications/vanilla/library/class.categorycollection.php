@@ -214,7 +214,9 @@ class CategoryCollection {
      */
     public function get($categoryID) {
         // Figure out the ID.
-        if (is_int($categoryID)) {
+        if (empty($categoryID) && $categoryID !== 0) {
+            return null;
+        } elseif (is_int($categoryID)) {
             $id = $categoryID;
         } elseif (isset($this->categorySlugs[$categoryID])) {
             $id = $this->categorySlugs[$categoryID];
